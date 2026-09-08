@@ -2,11 +2,7 @@
 
 I have a software comapny named BonolotaIT and the logo is given on image, now i want a very beautiful and professional as worldwide stand website for my company . we are providing web app (SAAS), websites, android and ios app also use some dummy image for suitable with these and give me a very beautiful design .. act as a UI?UX designer.. use color combiantion of black and Teal / Cyan-Green ...
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/5ed95f7a-7fa4-473d-9a3c-84981f6e4bb8).
+This project was built with Love.
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
 - **Stay in sync**: every change made in Lovable is committed straight to this repository.
