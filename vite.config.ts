@@ -12,4 +12,8 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  nitro: {
+    // cPanel Node.js / VPS: listen with a normal Node server, not Cloudflare Workers
+    preset: "node-server",
+  },
 });
