@@ -230,6 +230,68 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
 );
 CarouselNext.displayName = "CarouselNext";
 
+const CarouselDots = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & { slides?: number }
+>(({ className, slides = 0, ...props }, ref) => {
+    const { api } = useCarousel();
+    const [selected, setSelected] = React.useState(0);
+    const [count, setCount] = React.useState(slides);
+
+    React.useEffect(() => {
+      if (!api) {
+        return;
+      }
+
+      const sync = () => {
+        setCount(api.scrollSnapList().length);
+        setSelected(api.selectedScrollSnap());
+      };
+
+      sync();
+      api.on("select", sync);
+      api.on("reInit", sync);
+
+      return () => {
+        api.off("select", sync);
+        api.off("reInit", sync);
+      };
+    }, [api]);
+
+    if (count <= 1) {
+      return null;
+    }
+
+    return (
+      <div
+        ref={ref}
+        role="tablist"
+        aria-label="Carousel pagination"
+        className={cn("mt-8 flex items-center justify-center gap-2", className)}
+        {...props}
+      >
+        {Array.from({ length: count }).map((_, index) => (
+          <button
+            key={index}
+            type="button"
+            role="tab"
+            aria-label={`Go to slide ${index + 1}`}
+            aria-selected={selected === index}
+            className={cn(
+              "h-2.5 rounded-full transition-all duration-300",
+              selected === index
+                ? "w-8 bg-primary"
+                : "w-2.5 bg-muted-foreground/35 hover:bg-muted-foreground/60",
+            )}
+            onClick={() => api?.scrollTo(index)}
+          />
+        ))}
+      </div>
+    );
+  },
+);
+CarouselDots.displayName = "CarouselDots";
+
 export {
   type CarouselApi,
   Carousel,
@@ -237,4 +299,5 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselDots,
 };

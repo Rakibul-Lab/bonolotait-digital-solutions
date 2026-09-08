@@ -1,0 +1,16 @@
+.text-logo-wave {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.text-logo-wave svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.text-logo-wave__chip {
+  pointer-events: none;
+}
