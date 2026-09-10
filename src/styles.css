@@ -399,10 +399,6 @@
   animation-play-state: running;
 }
 
-.hero-scene:hover img {
-  animation-play-state: paused;
-}
-
 .animate-fadeInDown {
   animation-name: fadeInDown;
 }
